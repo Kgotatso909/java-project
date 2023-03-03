@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class testBankingFees{
+    public static void main(String[] args) {
+      Scanner scan = new Scanner(System.in);
+      System.out.print("Input: ");
+      int input = scan.nextInt();
+      
+      // Declare variables 
+      double bankFee = 200;
+      double transFee = 0;
+      double discount = 0;
+      double serviceFee = 0;
+      
+      if(input < 0)
+      {
+          System.out.print("Output: Error - A negative number was entered.");
+          System.exit(-1);
+      }
+      else if (input > 0 && input < 10)
+      {
+         transFee = input * 25.50;
+         discount = 0;
+      }
+      else if (input >= 10 && input <= 29)
+      {
+         transFee = input * 20.00;
+         discount = 0;
+      }
+      else if (input >= 30 && input <= 49)
+      {
+         transFee = input * 15.50;
+         discount = transFee*0.025;
+      }
+      else
+      {
+         transFee = input * 10.00;
+         discount = transFee * 0.04;
+      }
+      serviceFee = (bankFee+transFee)-discount;
+      String display = String.format("Output: \nNumber of transactions: %d \nBase banking fee: R%.2f\nTransction fee: R%.2f \nDiscount: R%.2f \nService fee: R%.2f", input,bankFee,transFee,discount,serviceFee);
+      System.out.print(display);
+      
+    }
+}
